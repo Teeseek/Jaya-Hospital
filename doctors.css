@@ -1,0 +1,139 @@
+*{
+    font-family: "Kumbh Sans",sans-serif;
+    text-decoration: none;
+}
+
+/*Nav */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: rgb(0, 255, 162);
+    font-family: sans-serif;
+    padding-right: 15px;
+    padding-left: 15px;
+    z-index: 1000;
+}
+
+.navdiv {
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* Distributes space evenly between items */
+    margin-right: 550px;
+}
+
+.logo {
+    flex-shrink: 0; /* Prevents the logo from shrinking */
+}
+
+.navdiv ul {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.navdiv li {
+    padding: 10px;
+}
+
+.navdiv li a {
+    color: rgb(0, 0, 0);
+    font-size: 18px;
+    font-weight: bold;
+    margin-right: 25px;
+    transition: color 0.3s ease;
+}
+
+li a:hover {
+    color: white;
+    font-size: 130%;
+}
+
+.title{
+    width: 90%;
+    color: rgb(0, 255, 162);
+    position: absolute;
+    top: 15%;
+    left: 5%;
+    text-align: center;
+}
+
+.title h2{
+    font-size: 60px;
+}
+
+.container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+    width: 100%;
+    max-width: 1200px;
+    margin-left: 300px;
+}
+
+.profile-card {
+    background-color: #1a1a2e;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    color: #fff;
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+.profile-card:hover{
+    background-color: #1a1a2e;
+    transition: transform 0.3s ease;
+    transform: scale(1.03);
+}
+.profile-card img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+
+.info {
+    padding: 15px;
+}
+
+.info h2 {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+    color: #ff4757;
+}
+
+.info p {
+    margin-bottom: 5px;
+}
+
+.info p strong {
+    font-weight: bold;
+}
+
+
+/*For Footer*/
+h1, h2, h3, p, a {
+    margin: 15px 0;
+}
+
+a {
+    display: block;
+    color: #3498db;
+    text-decoration: none;
+}
+
+.contan, .contain, .cont{
+    display: flex;
+    justify-content: space-evenly;
+}
+.wrap{
+    display: inline;
+    justify-content: space-around;
+    align-items: center;
+}
+
+body{
+    background: linear-gradient(rgba(255, 254, 254, 0.5), rgba(0, 0, 0, 0.5)), url('bgaboutus.png');
+}
