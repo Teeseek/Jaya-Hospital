@@ -7,10 +7,8 @@
 https://github.com/user-attachments/assets/11ececc0-aca2-415d-8a2b-39b16e77bb32
 
 
-**FOR THE ONLINE WEBSTIE!!!**
-￬￬￬￬
 www.jayahospital.infinityfreeapp.com
-↑↑↑↑
+
 
 
 
