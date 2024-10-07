@@ -42,7 +42,6 @@ if (isset($_POST['submit'])) {
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Jaya Hospital</title>
-    <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@100..900&display=swap" rel="stylesheet">
@@ -184,7 +183,7 @@ body {
     outline: none;
 }
 .btn{
-    height: 35px;
+    height: 45px;
     background: rgba(76,68,182,0.808);
     border: 0;
     border-radius: 5px;
@@ -284,5 +283,36 @@ a {
     display: inline;
     justify-content: space-around;
     align-items: center;
+}
+
+/* Media Queries */
+@media screen and (max-width: 600px) {
+    .navbar{
+    padding-right: 0px;
+    padding-left: 0px;
+    }
+    .navdiv {
+    margin-right: 0px;
+    }
+    .logo img{
+    width: 85px;
+    }
+    .navdiv li {
+    padding: 0px;
+    }
+    .navdiv li a {
+    font-size: 12px;
+    margin-right:8px;
+    }
+    
+    li a:hover {
+    font-size: 10%;
+    }
+    h1{
+        font-size: 22px;
+    }
+    h2{
+    font-size: 20px;
+    }
 }
 </style>

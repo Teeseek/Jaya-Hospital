@@ -72,7 +72,6 @@ if (isset($_POST['signup_submit'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="register.css">
     <title>Jaya Hospital</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -170,6 +169,7 @@ if (isset($_POST['signup_submit'])) {
     </div>
 </footer>
 </html>
+
 <style>
 * {
     font-family: "Kumbh Sans", sans-serif;
@@ -404,7 +404,43 @@ p {
     font-size: 18px;
 }
 
-
-
-
+/* Media Queries */
+@media screen and (max-width: 600px) {
+    .navbar{
+    padding-right: 0px;
+    padding-left: 0px;
+    }
+    .navdiv {
+    margin-right: 0px;
+    }
+    .logo img{
+    width: 85px;
+    }
+    .navdiv li {
+    padding: 0px;
+    }
+    .navdiv li a {
+    font-size: 12px;
+    margin-right:8px;
+    }
+    
+    li a:hover {
+    font-size: 10%;
+    }
+    h1{
+        font-size: 22px;
+    }
+    h2{
+    font-size: 20px;
+    }
+    .loginandsignup {
+        top: 20%;
+        left: 0;
+        width: 370px;
+        height: 650px;
+    }
+    .login-section {
+        width: 370px;
+    }
+}
 </style>

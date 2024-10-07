@@ -274,4 +274,36 @@ a {
     justify-content: space-around;
     align-items: center;
 }
+
+/* Media Queries */
+@media screen and (max-width: 600px) {
+    .navbar{
+    padding-right: 0px;
+    padding-left: 0px;
+    }
+    .navdiv {
+    margin-right: 0px;
+    }
+    .logo img{
+    width: 85px;
+    }
+    .navdiv li {
+    padding: 0px;
+    }
+    .navdiv li a {
+    font-size: 12px;
+    margin-right:8px;
+    }
+    
+    li a:hover {
+    font-size: 10%;
+    }
+    h1{
+        font-size: 22px;
+    }
+    h2{
+    font-size: 20px;
+    }
+}
+
 </style>

@@ -40,7 +40,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
     <title>Jaya Hospital</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -162,6 +161,7 @@ function closePopup() {
 *{
     font-family: "Kumbh Sans",sans-serif;
     text-decoration: none;
+    overflow-x: hidden;
 }
 
 .wrapper{
@@ -242,7 +242,7 @@ textarea{
     background:hsl(0, 0%, 100%);
     border-radius: 5px;
     position: absolute;
-    top: 0;
+    top: 0%;
     left: 50%;
     transform: translate(-50%,-50%) scale(0.1);
     text-align: center;
@@ -263,7 +263,7 @@ textarea{
 
 #tick{
     width: 100px;
-    margin-top: -50px;
+    margin-top: 70px;
     border-radius: 65%;
     box-shadow: 0 5px 8px rgba(0, 0, 0, 0.192);
 }
@@ -346,263 +346,6 @@ li a:hover {
 
 
 
-.lang-menu:hover ul {
-    display: block;
-}
-
-/* Basic Info */
-@keyframes bounce {
-    0%,
-    20%,
-    50%,
-    80%,
-    100% {
-    transform: translateY(0);
-    }
-    40% {
-    transform: translateY(-30px);
-    }
-    60% {
-    transform: translateY(-15px);
-    }
-}
-
-.introduction {
-    width: 90%;
-    color: rgb(0, 255, 162);
-    position: absolute;
-    top: 15%;
-    left: 5%;
-    text-align: center;
-    animation: bounce;
-    animation-duration: 2s;
-    animation-delay: 0ms;
-}
-
-.introduction h2 {
-    font-size: 60px;
-}
-
-.introduction p {
-    font-size: 20px;    
-    color: black;
-}
-
-/* The Booking + Ambulance Buttons */
-.buttons {
-    display: flex;
-    justify-content: center;
-    padding: -10px;
-}
-
-#button1 {
-    background-color: black;
-    color: white;
-    border: 2px solid black;
-    border-radius: 15px;
-    padding: 15px 30px;
-    font-size: 20px;
-    cursor: pointer;
-    display: block;
-    margin: 0 auto;
-    transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
-    font-size: 50px;
-}
-
-#button1:hover {
-    background-color: rgb(61, 255, 181);
-    color: black;
-    transform: scale(1.1);
-    background:url(https://media.bizj.us/view/img/11684257/gettyimages-1234036542*1200xx2121-1198-0-33.jpg);
-}
-
-#button2 {
-    background-color: black;
-    color: white;
-    border: 2px solid black;
-    border-radius: 15px;
-    padding: 15px 30px;
-    font-size: 20px;
-    cursor: pointer;
-    display: block;
-    margin: 0 auto;
-    transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
-    font-size: 50px;
-}
-
-#button2:hover {
-    background-color: rgb(61, 255, 181);
-    color: black;
-    transform: scale(1.1);
-    background:url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTApZAL3voiLfcH3zpbglQdu_arYHK5DuiB7Q&s);
-}
-
-/* Info Cards */
-@keyframes appear{
-    from {
-        opacity: 0;
-        scale: 0.5;
-    }
-    to {
-        opacity: 1;
-        scale: 1;
-    }
-}
-
-
-.card {
-    display: flex;
-    margin-bottom: 20px;
-    border-bottom: 2px solid #ccc;
-    padding-bottom: 20px;
-    animation: appear linear;
-    animation-timeline: view();
-    animation-range: entry 0% cover 30%;
-    animation-timing-function: ease-in;
-}
-
-#card1 {
-    margin-top: 500px;
-}
-
-#cardimg1 {
-    margin-left: 200px;
-
-}
-
-#cardimg2 {
-    margin-right: 200px;
-}
-
-#inf1 {
-    margin-left: 135px;
-}
-
-.card-img {
-    flex: 1.5;
-    margin-right: 100px;
-}
-
-.card-img img {
-    width: 100%;
-    height: auto;
-    border-radius: 10px;
-}
-
-.card-content {
-    flex: 2;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
-
-.card-content h1, .card-content h2, .card-content p {
-    margin: 0;
-    padding: 0 0 10px 0;
-}
-
-.card-content p {
-    margin-top: 10px;
-    margin-right: 300px;
-}
-
-.card:nth-child(even) {
-    flex-direction: row-reverse;
-}
-
-.card:nth-child(even) .card-img {
-    margin-right: 0;
-    margin-left: 20px;
-}
-
-.card:nth-child(even) .card-content {
-    margin-left: 200px;
-}
-
-/* Login */
-.loginandsignup {
-    position: absolute;
-    top: 25%;
-    left: 35%;
-    width: 460px;
-    height: 640px;
-    border-radius: 12px;
-    padding: 20px 30px 120px;
-    background: #303f9f;
-    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
-    overflow: hidden;
-}
-
-.login-section {
-    position: absolute;
-    left: 50%;
-    bottom: -88%;
-    transform: translateX(-50%);
-    width: 450px;
-    padding: 10px 300px;
-    background: #fff;
-    border-radius: 300px;
-    height: 100%;
-    transition: all 0.6s ease;
-}
-
-.login-section header,
-.signup-section header {
-    font-size: 30px;
-    text-align: center;
-    color: #fff;
-    font-weight: 600;
-    cursor: pointer;
-}
-
-.login-section header {
-    color: #333;
-    opacity: 0.6;
-}
-
-.separator {
-    margin-top: 20px;
-    display: flex;
-    align-items: center;
-    gap: 20px;
-}
-
-.separator .line {
-    width: 100%;
-    height: 1px;
-    background: #ccc;
-}
-
-.loginandsignup form {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    margin-top: 30px;
-}
-
-form input {
-    outline: none;
-    border: none;
-    padding: 10px 15px;
-    font-size: 16px;
-    color: #333;
-    font-weight: 400;
-    border-radius: 8px;
-    background: #fff;
-}
-
-.login-section input {
-    border: 1px solid #aaa;
-}
-
-form a {
-    color: #333;
-}
-
-.signup-section form a {
-    color: #fff;
-}
-
 form .btn {
     margin-top: 15px;
     border: none;
@@ -613,15 +356,6 @@ form .btn {
     cursor: pointer;
 }
 
-.loginandsignup header:hover {
-    font-size: 250%;
-    color: rgb(79, 173, 255);
-    transition: font-size 0.25s;
-    border-color: rgb(140, 242, 255);
-    border-radius: 10px;
-    border-width: 110%;
-}
-
 form .btn:hover {
     font-size: 115%;
     color: rgb(79, 173, 255);
@@ -630,26 +364,6 @@ form .btn:hover {
     border-color: rgb(140, 242, 255);
     border-radius: 10px;
     border-width: 110%;
-}
-
-.login-section .btn {
-    background: #303f9f;
-    color: #fff;
-    border: none;
-}
-
-.loginandsignup.active .login-section {
-    bottom: -12%;
-    border-radius: 300px;
-    box-shadow: 0 -5px 10px rgba(0, 0, 0, 0.1);
-}
-
-.loginandsignup.active .login-section header {
-    opacity: 1;
-}
-
-.loginandsignup.active .signup-section header {
-    opacity: 0.6;
 }
 
 /* Footer */
@@ -716,6 +430,65 @@ a {
 
 p {
     font-size: 18px;
+}
+
+/* Media Queries */
+@media screen and (max-width: 600px) {
+    .navbar{
+    padding-right: 0px;
+    padding-left: 0px;
+    }
+    .navdiv {
+    margin-right: 0px;
+    }
+    .logo img{
+    width: 85px;
+    }
+    .navdiv li {
+    padding: 0px;
+    }
+    .navdiv li a {
+    font-size: 12px;
+    margin-right:8px;
+    }
+    
+    li a:hover {
+    font-size: 10%;
+    }
+    h1{
+        font-size: 22px;
+    }
+    h2{
+    font-size: 20px;
+    }
+    .wrapper{
+	position: relative;
+	width: 100%;
+	height: 50%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding: 0px 0px;
+}
+.container{
+	max-width: 100%;
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+	background-color: #fff;
+	box-shadow: 0px 0px 19px 5px rgba(0,0,0,0.19);
+    margin-right: 0px;
+}
+.left{
+	background: url("Images/Hospitalimg.jpg") no-repeat center;
+	background-size: cover;
+	height: 100%;
+}
+.right{
+	padding: 0px 0px;
+}
 }
 
 </style>

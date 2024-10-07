@@ -143,6 +143,37 @@
         body {
             background: linear-gradient(rgba(255, 254, 254, 0.5), rgba(0, 0, 0, 0.5)), url('bgaboutus.png');
         }
+
+/* Media Queries */
+@media screen and (max-width: 600px) {
+    .navbar{
+    padding-right: 0px;
+    padding-left: 0px;
+    }
+    .navdiv {
+    margin-right: 0px;
+    }
+    .logo img{
+    width: 85px;
+    }
+    .navdiv li {
+    padding: 0px;
+    }
+    .navdiv li a {
+    font-size: 12px;
+    margin-right:8px;
+    }
+    
+    li a:hover {
+    font-size: 10%;
+    }
+    h1{
+        font-size: 22px;
+    }
+    h2{
+    font-size: 20px;
+    }
+}
     </style>
 </head>
 <body>
