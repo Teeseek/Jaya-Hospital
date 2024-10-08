@@ -205,37 +205,27 @@
     </div>
 
     <div class="container" id="doctorContainer">
-        <?php
-        // Database connection
-        $conn = mysqli_connect("localhost", "root", "", "jaya_hospital") or die("Couldn't connect");
-        // Check connection
-        if (!$conn) {
-            die("Connection failed: " . mysqli_connect_error());
+                <?php
+        include 'db_connect.php';  // Connect to your database
+
+        $sql = "SELECT * FROM doctors";  // Query to fetch doctor details
+        $result = mysqli_query($con, $sql);  // Execute query
+
+        // Loop through the result set and display each doctor's profile
+        while ($row = mysqli_fetch_assoc($result)) {
+            echo '
+            <div class="profile-card">
+                <img src="doctor/' . $row['profile_img'] . '" alt="Doctor Image">
+                <div class="info">
+                    <h2>' . $row['name'] . '</h2>
+                    <p><strong>Gender:</strong> ' . $row['gender'] . '</p>
+                    <p><strong>Ethnicity:</strong> ' . $row['ethnicity'] . '</p>
+                    <p><strong>Specialized Area:</strong> ' . $row['specialized_area'] . '</p>
+                    <p><strong>Languages Spoken:</strong> ' . $row['languages_spoken'] . '</p>
+                    <p><strong>Bio:</strong> ' . $row['bio'] . '</p>
+                </div>
+            </div>';
         }
-
-        // Query to fetch doctor details
-        $sql = "SELECT * FROM doctors";
-        $result = mysqli_query($conn, $sql);
-
-        if (mysqli_num_rows($result) > 0) {
-            while ($row = mysqli_fetch_assoc($result)) {
-                echo '<div class="profile-card">';
-                echo '<img src="doctor/' . htmlspecialchars($row['profile_img']) . '" class="docimg" alt="' . htmlspecialchars($row['name']) . '">';
-                echo '<div class="info">';
-                echo '<h2>' . htmlspecialchars($row['name']) . '</h2>';
-                echo '<p><strong>Gender:</strong> ' . htmlspecialchars($row['gender']) . '</p>';
-                echo '<p><strong>Ethnicity:</strong> ' . htmlspecialchars($row['ethnicity']) . '</p>';
-                echo '<p><strong>Specialized Area:</strong> ' . htmlspecialchars($row['specialized_area']) . '</p>';
-                echo '<p><strong>Languages Spoken:</strong> ' . htmlspecialchars($row['languages_spoken']) . '</p>';
-                echo '<p>' . htmlspecialchars($row['bio']) . '</p>';
-                echo '</div>';
-                echo '</div>';
-            }
-        } else {
-            echo "No doctors found.";
-        }
-
-        mysqli_close($conn);
         ?>
     </div>
 
