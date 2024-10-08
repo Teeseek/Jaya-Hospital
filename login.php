@@ -89,7 +89,7 @@ if (isset($_POST['signup_submit'])) {
                 <li><a href="index.html">Home</a></li>
                 <li><a href="Details(AboutUs).html">About Us</a></li>
                 <li><a href="display_doctors.php">Doctors</a></li>
-                <li><a href="login.php">Booking</a></li>
+                <li><a href="login.php">Appointment</a></li>
                 <li><a href="FeedbackForm.php">Reviews</a></li>
                 <li><a href="login.php">Log In</a></li>
                 <li><a href="stafflogin.php">Staff</a></li>
