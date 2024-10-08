@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -34,38 +33,6 @@
 
         <h2>Book an Appointment</h2>
 
-        <?php
-        if ($_SERVER["REQUEST_METHOD"] == "POST") {
-            $servername = "sql305.infinityfree.com";
-            $username = "if0_37226912";
-            $password = "uj3MOvFr54G";
-            $dbname = "if0_37226912_jaya_hospital";
-
-            // Create connection
-            $conn = new mysqli($servername, $username, $password, $dbname);
-
-            // Check connection
-            if ($conn->connect_error) {
-                die("Connection failed: " . $conn->connect_error);
-            }
-
-            $patient_name = $_POST['patient_name'];
-            $medical_condition = $_POST['medical_condition'];
-            $doctor_name = $_POST['doctor_name'];
-            $appointment_date = $_POST['appointment_date'];
-
-            $sql = "INSERT INTO appointments (patient_name, medical_condition, doctor_name, appointment_date) 
-                    VALUES ('$patient_name', '$medical_condition', '$doctor_name', '$appointment_date')";
-
-            if ($conn->query($sql) === TRUE) {
-                echo "<p>New appointment booked successfully.</p>";
-            } else {
-                echo "<p>Error: " . $sql . "<br>" . $conn->error . "</p>";
-            }
-
-            $conn->close();
-        }
-        ?>
 <div class="container">
         <form action="" method="POST">
             <label for="patient_name">Full Name:</label>
@@ -198,14 +165,24 @@ button:hover {
 }
 
 </style>
+<?php
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+include 'db_connect.php'
 
-<?php while ($row = mysqli_fetch_assoc($result)): ?>
-    <tr>
-        <td><?php echo htmlspecialchars($row['id']); ?></td>
-        <td><a href="bsystem_details.php?name=<?php echo urlencode($row['patient_name']); ?>"><?php echo htmlspecialchars($row['patient_name']); ?></a></td>
-        <td><?php echo htmlspecialchars($row['medical_condition']); ?></td>
-        <td><?php echo htmlspecialchars($row['doctor_name']); ?></td>
-        <td><?php echo htmlspecialchars($row['appointment_date']); ?></td>
-        <td><?php echo htmlspecialchars($row['created_at']); ?></td>
-    </tr>
-<?php endwhile; ?>
+    // Get form data
+    $patient_name = $_POST['patient_name'];
+    $medical_condition = $_POST['medical_condition'];
+    $doctor_name = $_POST['doctor_name'];
+    $appointment_date = $_POST['appointment_date'];
+
+    // SQL Insert query
+    $sql = "INSERT INTO appointments (patient_name, medical_condition, doctor_name, appointment_date) 
+            VALUES ('$patient_name', '$medical_condition', '$doctor_name', '$appointment_date')";
+
+    // Execute query and handle response
+    echo ($conn->query($sql) === TRUE) 
+        ? "<p>New appointment booked successfully.</p>" 
+        : "<p>Error: " . $sql . "<br>" . $conn->error . "</p>";
+
+}
+?>
