@@ -29,11 +29,11 @@
         .navdiv {
             display: flex;
             align-items: center;
-            justify-content: space-between; /* Distributes space evenly between items */
+            justify-content: space-between;
             margin-right: 550px;
         }
         .logo {
-            flex-shrink: 0; /* Prevents the logo from shrinking */
+            flex-shrink: 0;
         }
         .navdiv ul {
             display: flex;
@@ -55,14 +55,14 @@
             color: white;
             font-size: 130%;
         }
-        .search-bar-container {
-            margin-top: 100px; /* Adjust based on the height of your navbar */
+        .filter-container {
+            margin-top: 100px;
             text-align: center;
             padding: 20px;
         }
-        .search-bar {
+        .filter-select {
             width: 100%;
-            max-width: 600px;
+            max-width: 300px;
             padding: 10px;
             border: 2px solid rgb(0, 255, 162);
             border-radius: 5px;
@@ -74,7 +74,7 @@
             color: rgb(0, 255, 162);
             position: relative;
             text-align: center;
-            top:15%;
+            top: 15%;
             left: 5%;
             margin-top: 20px;
         }
@@ -87,7 +87,7 @@
             gap: 20px;
             width: 100%;
             max-width: 1200px;
-            margin: 20px auto; /* Center align and add some margin */
+            margin: 20px auto;
         }
         .profile-card {
             background-color: #1a1a2e;
@@ -143,42 +143,58 @@
         body {
             background: linear-gradient(rgba(255, 254, 254, 0.5), rgba(0, 0, 0, 0.5)), url('bgaboutus.png');
         }
-
-/* Media Queries */
-@media screen and (max-width: 600px) {
-    .navbar{
-    padding-right: 0px;
-    padding-left: 0px;
+        #filterbut{
+   background-color: rgb(0, 255, 162); /* Match the green from your navbar */
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;        }
+    #filterbut:hover{
+          background-color: rgb(0, 200, 130); /* Darker green on hover */
+    transform: scale(1.05); /* Slight zoom effect */
     }
-    .navdiv {
-    margin-right: 0px;
+    #filterbut:active{
+            background-color: rgb(0, 170, 110); /* Even darker green when clicked */
+    transform: scale(1.03); /* Slight zoom-in on click */
     }
-    .logo img{
-    width: 85px;
-    }
-    .navdiv li {
-    padding: 0px;
-    }
-    .navdiv li a {
-    font-size: 12px;
-    margin-right:8px;
-    }
+        /* Media Queries */
+        @media screen and (max-width: 600px) {
+            .navbar{
+                padding-right: 0px;
+                padding-left: 0px;
+            }
+            .navdiv {
+                margin-right: 0px;
+            }
+            .logo img{
+                width: 65px;
+            }
+            .navdiv li {
+                padding: 0px;
+            }
+            .navdiv li a {
+                font-size: 11px;
+                margin-right: 10px;
+            }
+            li a:hover {
+                font-size: 10%;
+            }
+            h1 {
+                font-size: 22px;
+            }
+            h2 {
+                font-size: 20px;
+            }
+        }
     
-    li a:hover {
-    font-size: 10%;
-    }
-    h1{
-        font-size: 22px;
-    }
-    h2{
-    font-size: 20px;
-    }
-}
     </style>
 </head>
 <body>
     <nav class="navbar">
-        <!-- Navbar: Logo + Doctors + Emergency Hotline + About Us -->
         <div class="navdiv">
             <div class="logo">
                 <a href="index.html"><img src="Images/jayalogo.png" width="120px"></a>
@@ -195,9 +211,27 @@
         </div>
     </nav>
 
-    <!-- Search Bar -->
-    <div class="search-bar-container">
-        <input type="text" id="searchBar" class="search-bar" placeholder="Search for doctors...">
+    <!-- Specialized Area Filter -->
+    <div class="filter-container">
+        <form method="POST" action="">
+            <select id="specialized_area" name="specialized_area" class="filter-select" required>
+                <option value="">Filter by Specialized Area</option>
+                <?php
+                include 'db_connect.php';  // Connect to your database
+
+                // Fetch distinct specialized areas from doctors table
+                $specialized_query = "SELECT DISTINCT specialized_area FROM doctors ORDER BY specialized_area";
+                $specialized_result = mysqli_query($con, $specialized_query);
+
+                // Populate dropdown with specialized areas
+                while ($row = mysqli_fetch_assoc($specialized_result)) {
+                    $selected = (isset($_POST['specialized_area']) && $_POST['specialized_area'] == $row['specialized_area']) ? 'selected' : '';
+                    echo '<option value="' . $row['specialized_area'] . '" ' . $selected . '>' . $row['specialized_area'] . '</option>';
+                }
+                ?>
+            </select>
+            <input type="submit" value="Filter" id="filterbut">
+        </form>
     </div>
 
     <div class="title">
@@ -205,10 +239,13 @@
     </div>
 
     <div class="container" id="doctorContainer">
-                <?php
-        include 'db_connect.php';  // Connect to your database
+        <?php
+        $filter = isset($_POST['specialized_area']) ? mysqli_real_escape_string($con, $_POST['specialized_area']) : '';
+        $sql = "SELECT * FROM doctors";
+        if ($filter) {
+            $sql .= " WHERE specialized_area = '$filter'";
+        }
 
-        $sql = "SELECT * FROM doctors";  // Query to fetch doctor details
         $result = mysqli_query($con, $sql);  // Execute query
 
         // Loop through the result set and display each doctor's profile
@@ -230,8 +267,8 @@
     </div>
 
     <footer>
-    <hr>
-    <div class="contain">
+        <hr>
+        <div class="contain">
         <div class="item1">
         <h1>Jaya Hospital Inc.©</h1>
         <p>Departments and Contact Numbers:</p>
@@ -265,23 +302,5 @@
         <br>
         <hr>
     </footer>
-
-    <script>
-        document.getElementById('searchBar').addEventListener('input', function() {
-            var searchTerm = this.value.toLowerCase();
-            var cards = document.querySelectorAll('.profile-card');
-
-            cards.forEach(function(card) {
-                var name = card.querySelector('.info h2').textContent.toLowerCase();
-                var bio = card.querySelector('.info p').textContent.toLowerCase();
-                
-                if (name.includes(searchTerm) || bio.includes(searchTerm)) {
-                    card.style.display = '';
-                } else {
-                    card.style.display = 'none';
-                }
-            });
-        });
-    </script>
 </body>
 </html>
